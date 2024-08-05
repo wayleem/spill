@@ -1,20 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import "./global.css";
+// App.tsx
+import React from "react";
+import { View, Text } from "react-native";
+import tw from "twrnc";
 
-export default function App() {
+const App = () => {
 	return (
-		<View className="flex-1 items-center justify-center bg-white">
-			<Text>Open up App.tsx to start working on your app!</Text>
-			<StatusBar style="auto" />
+		<View style={tw`flex-1 justify-center items-center bg-blue-500`}>
+			<Text style={tw`text-red-200 text-lg`}>Hello, Tailwind!</Text>
 		</View>
 	);
-}
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-});
+};
+
+export default App;
