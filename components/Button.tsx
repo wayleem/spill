@@ -1,6 +1,6 @@
 // components/Button.tsx
 import React from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, Text } from "react-native";
 import tw from "twrnc";
 
 interface ButtonProps {
@@ -11,20 +11,17 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, style }) => {
 	return (
-		<Pressable style={[tw`bg-blue-500 py-2 px-4 rounded-lg`, styles.button, style]} onPress={onPress}>
-			<Text style={tw`text-white text-center font-bold`}>{title}</Text>
+		<Pressable
+			style={({ pressed }) => [
+				tw`bg-blue-500 py-3 px-6 rounded-lg shadow-md`,
+				pressed ? tw`bg-blue-600` : {},
+				style,
+			]}
+			onPress={onPress}
+		>
+			<Text style={tw`text-white text-center font-bold text-lg`}>{title}</Text>
 		</Pressable>
 	);
 };
-
-const styles = StyleSheet.create({
-	button: {
-		elevation: 3,
-		shadowColor: "#000",
-		shadowOffset: { width: 0, height: 1 },
-		shadowOpacity: 0.3,
-		shadowRadius: 2,
-	},
-});
 
 export default Button;

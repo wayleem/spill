@@ -1,15 +1,15 @@
 // components/Card.tsx
-import React from "react";
-import { View } from "react-native";
+import React, { ReactNode } from "react";
+import { View, ViewStyle } from "react-native";
 import tw from "twrnc";
 
 interface CardProps {
-	children: React.ReactNode;
-	style?: string;
+	children: ReactNode;
+	style?: ViewStyle;
 }
 
 const Card: React.FC<CardProps> = ({ children, style }) => {
-	return <View style={[tw`bg-white rounded-lg p-4 shadow-md`, style ? tw(style) : {}]}>{children}</View>;
+	return <View style={[tw`bg-white rounded-xl p-6 shadow-sm`, style]}>{children}</View>;
 };
 
 export default Card;

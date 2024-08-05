@@ -1,6 +1,6 @@
 // components/Input.tsx
-import React from "react";
-import { TextInput } from "react-native";
+import React, { ReactNode } from "react";
+import { View, TextInput, KeyboardTypeOptions } from "react-native";
 import tw from "twrnc";
 
 interface InputProps {
@@ -8,16 +8,30 @@ interface InputProps {
 	value: string;
 	onChangeText: (text: string) => void;
 	style?: object;
+	keyboardType?: KeyboardTypeOptions;
+	leftIcon?: ReactNode;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, value, onChangeText, style }) => {
+const Input: React.FC<InputProps> = ({
+	placeholder,
+	value,
+	onChangeText,
+	style,
+	keyboardType = "default",
+	leftIcon,
+}) => {
 	return (
-		<TextInput
-			style={[tw`border border-gray-300 rounded-lg px-3 py-2`, style]}
-			placeholder={placeholder}
-			value={value}
-			onChangeText={onChangeText}
-		/>
+		<View style={[tw`flex-row items-center border border-gray-300 rounded-lg bg-white`, style]}>
+			{leftIcon && <View style={tw`pl-3`}>{leftIcon}</View>}
+			<TextInput
+				style={tw`flex-1 py-3 px-3 text-gray-700 text-base`}
+				placeholder={placeholder}
+				placeholderTextColor="#9CA3AF"
+				value={value}
+				onChangeText={onChangeText}
+				keyboardType={keyboardType}
+			/>
+		</View>
 	);
 };
 
